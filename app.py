@@ -49,54 +49,54 @@ def handle_message(event):
 
     elif message == '心情好':
             sticker_message = StickerSendMessage(
-            package_id='11537',
-            sticker_id='52002734'  # 開心的貼圖
+            package_id='446',
+            sticker_id='1991'  # 開心的貼圖
         )
             line_bot_api.reply_message(event.reply_token, sticker_message)
 
     elif message == '心情不好':
             sticker_message = StickerSendMessage(
-            package_id='11537',
-            sticker_id='52002750'  # 傷心的貼圖
+            package_id='11539',
+            sticker_id='52114138'  # 傷心的貼圖
         )
             line_bot_api.reply_message(event.reply_token, sticker_message)
 
     elif message == '找美食':
             location_message = LocationSendMessage(
             title='著名餐廳',
-            address='Gordon Ramsay Pub & Grill',
-            latitude=22.14726876398457,
-            longitude=113.56505331030235
+            address='Hog Island Oyster Co.',
+            latitude=37.79726181895184,
+            longitude=-122.39362601431256
         )
             line_bot_api.reply_message(event.reply_token, location_message)
 
     elif message == '找景點':
             location_message = LocationSendMessage(
             title='熱門景點',
-            address='Hylton Castle',
-            latitude=54.92642132251696,
-            longitude=-1.4441933898550596
+            address='Skarðsáfossur',
+            latitude=62.09834026797917,
+            longitude=-7.406501774391917
         )
             line_bot_api.reply_message(event.reply_token, location_message)
 
     elif message == '熱門音樂':
             audio_message = AudioSendMessage(
-            original_content_url='https://www.youtube.com/watch?v=mUhJUNJCcQ0',  # 替換為實際的音樂檔案網址
+            original_content_url='https://youtu.be/sJ-2X3rHtXw?si=Ow7QJEA94g_oSzjo',  # 替換為實際的音樂檔案網址
             duration=240000  # 音樂長度（毫秒）
         )
             line_bot_api.reply_message(event.reply_token, audio_message)
 
     elif message == '放鬆音樂':
             audio_message = AudioSendMessage(
-            original_content_url='https://www.youtube.com/watch?v=ekr2nIex040',  # 替換為實際的音樂檔案網址
+            original_content_url='https://youtu.be/b5d5OmmUlPc?si=KjqoCFqC-zMPUbBU',  # 替換為實際的音樂檔案網址
             duration=300000  # 音樂長度（毫秒）
         )
             line_bot_api.reply_message(event.reply_token, audio_message)
 
     elif message == '今天是我的生日':
             image_message = ImageSendMessage(
-            original_content_url='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTev_tjnQuGPY3SXZ4nznPgJqd9juRuBRoOw&s',  # 替換為實際的圖片網址
-            preview_image_url='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTev_tjnQuGPY3SXZ4nznPgJqd9juRuBRoOw&s'  # 替換為實際的預覽圖片網址
+            original_content_url='https://instagram.frmq1-1.fna.fbcdn.net/v/t51.29350-15/445982392_1168493424581932_2823979820016375869_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi44MDB4NTk5LnNkci5mMjkzNTAuZGVmYXVsdF9pbWFnZSJ9&_nc_ht=instagram.frmq1-1.fna.fbcdn.net&_nc_cat=104&_nc_ohc=sB_C31Fv8iEQ7kNvgHhyc2m&_nc_gid=e634efac047d43908457cd99e591ae05&edm=APs17CUBAAAA&ccb=7-5&ig_cache_key=MzM3MzY4MDM2NzUyMDk1MzkwMw%3D%3D.3-ccb7-5&oh=00_AYBT_hpWmBXVyHjuu3wIyJ9sU2H78qC0k1msekBCMXYG0w&oe=675A9D7C&_nc_sid=10d13b',  # 替換為實際的圖片網址
+            preview_image_url='https://instagram.frmq1-1.fna.fbcdn.net/v/t51.29350-15/445982392_1168493424581932_2823979820016375869_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi44MDB4NTk5LnNkci5mMjkzNTAuZGVmYXVsdF9pbWFnZSJ9&_nc_ht=instagram.frmq1-1.fna.fbcdn.net&_nc_cat=104&_nc_ohc=sB_C31Fv8iEQ7kNvgHhyc2m&_nc_gid=e634efac047d43908457cd99e591ae05&edm=APs17CUBAAAA&ccb=7-5&ig_cache_key=MzM3MzY4MDM2NzUyMDk1MzkwMw%3D%3D.3-ccb7-5&oh=00_AYBT_hpWmBXVyHjuu3wIyJ9sU2H78qC0k1msekBCMXYG0w&oe=675A9D7C&_nc_sid=10d13b'  # 替換為實際的預覽圖片網址
         )
             text_message = TextSendMessage(text='生日快樂！')
             line_bot_api.reply_message(event.reply_token, [image_message, text_message])
@@ -104,9 +104,9 @@ def handle_message(event):
     elif message in ['動作片', '動畫', '紀錄片']:
         # 根據類型傳送影片
         video_urls = {
-            '動作片': 'https://youtu.be/J4e68cK4FY0?si=LoDixR5kbjuLp9PH',
-            '動畫': 'https://youtu.be/Io9X8Clv3Xk?si=BFCVLv3JpwUiDXmD',
-            '紀錄片': 'https://youtu.be/IbaJ1hYYFH8?si=pC6A9DMzgzwECvh3'
+            '動作片': 'https://youtu.be/6PP7QzMowp4?si=JsEKHmvDJugizqzH',
+            '動畫': 'https://youtu.be/tfHhtCSGzn0?si=vjxdRSGM8ewilx0_',
+            '紀錄片': 'https://youtu.be/vmnuj5SoG-o?si=9uGkb1E_ZPb0Fxre'
         }
         video_url = video_urls.get(message)
         if video_url:
