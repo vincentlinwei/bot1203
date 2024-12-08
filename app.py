@@ -45,11 +45,11 @@ def callback():
 def handle_message(event):
     message = text=event.message.text
     stickers = [
-        {"package_id": "446", "sticker_id": "1988"},
-        {"package_id": "446", "sticker_id": "1989"},
-        {"package_id": "446", "sticker_id": "1990"},
-        {"package_id": "446", "sticker_id": "1991"},
-        {"package_id": "446", "sticker_id": "1992"},
+        {"package_id": "11539", "sticker_id": "52114110"},
+        {"package_id": "11539", "sticker_id": "52114111"},
+        {"package_id": "11539", "sticker_id": "52114112"},
+        {"package_id": "11539", "sticker_id": "52114113"},
+        {"package_id": "11539", "sticker_id": "52114114"},
     ]
 
     if event.message.text:
