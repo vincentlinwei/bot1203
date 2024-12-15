@@ -43,39 +43,31 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     message = text=event.message.text
-    if re.match('推薦餐廳',message):
-        imagemap_message = ImagemapSendMessage(
-            base_url='https://i.imgur.com/WbWyrhz.png?3',
-            alt_text='組圖訊息',
-            base_size=BaseSize(height=2000, width=2000),
-            actions=[
-                URIImagemapAction(
-                    link_uri='https://en.wikipedia.org/wiki/Cebu',
-                    area=ImagemapArea(
-                        x=0, y=0, width=1000, height=1000
+    if re.match('告訴我秘密',message):
+        image_carousel_template_message = TemplateSendMessage(
+            alt_text='這是TemplateSendMessage',
+            template=ImageCarouselTemplate(
+                columns=[
+                    ImageCarouselColumn(
+                        image_url='https://i.imgur.com/kNBl363.jpg',
+                        action=PostbackAction(
+                            label='台灣',
+                            display_text='台北101、逢甲夜市、墾丁...',
+                            data='action=001'
+                        )
+                    ),
+                    ImageCarouselColumn(
+                        image_url='https://i.imgur.com/GBPcUEP.png',
+                        action=PostbackAction(
+                            label='日本',
+                            display_text='金閣寺、淺草寺、北海道...',
+                            data='action=002'
+                        )
                     )
-                ),
-                URIImagemapAction(
-                    link_uri='https://en.wikipedia.org/wiki/Taipei',
-                    area=ImagemapArea(
-                        x=1000, y=0, width=1000, height=1000
-                    )
-                ),
-                URIImagemapAction(
-                    link_uri='https://en.wikipedia.org/wiki/Osaka',
-                    area=ImagemapArea(
-                        x=0, y=1000, width=1000, height=1000
-                    )
-                ),
-                URIImagemapAction(
-                    link_uri='https://en.wikipedia.org/wiki/Shanghai',
-                    area=ImagemapArea(
-                        x=1000, y=1000, width=1000, height=1000
-                    )
-                )
-            ]
+                ]
+            )
         )
-        line_bot_api.reply_message(event.reply_token, imagemap_message)
+        line_bot_api.reply_message(event.reply_token, image_carousel_template_message)
     else:
         line_bot_api.reply_message(event.reply_token, TextSendMessage(message))
 #主程式
