@@ -43,31 +43,60 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     message = text=event.message.text
-    if re.match('告訴我秘密',message):
-        image_carousel_template_message = TemplateSendMessage(
-            alt_text='這是TemplateSendMessage',
-            template=ImageCarouselTemplate(
+    if re.match('推薦景點',message):
+        carousel_template_message = TemplateSendMessage(
+            alt_text='熱門旅行景點',
+            template=CarouselTemplate(
                 columns=[
-                    ImageCarouselColumn(
-                        image_url='https://i.imgur.com/kNBl363.jpg',
-                        action=PostbackAction(
-                            label='台灣',
-                            display_text='台北101、逢甲夜市、墾丁...',
-                            data='action=001'
-                        )
+                    CarouselColumn(
+                        thumbnail_image_url='https://www.todaiji.or.jp/wp-content/uploads/2022/02/daibutsuden00.jpg',
+                        title='東大寺',
+                        text='Todaiji Temple',
+                        actions=[
+                            URIAction(
+                                label='導覽',
+                                uri='https://www.todaiji.or.jp/zh/information/daibutsuden/'
+                            ),
+                            URIAction(
+                                label='詳細資訊',
+                                uri='https://www.todaiji.or.jp/zh/information/daibutsuden/'
+                            )
+                        ]
                     ),
-                    ImageCarouselColumn(
-                        image_url='https://i.imgur.com/GBPcUEP.png',
-                        action=PostbackAction(
-                            label='日本',
-                            display_text='金閣寺、淺草寺、北海道...',
-                            data='action=002'
-                        )
+                    CarouselColumn(
+                        thumbnail_image_url='https://upload.wikimedia.org/wikipedia/commons/c/c2/01_khafre_north.jpg',
+                        title='埃及金字塔',
+                        text='egyptian pyramidsd',
+                        actions=[
+                            URIAction(
+                                label='導覽',
+                                uri='https://ninetyroadtravel.com/egypt/khufu/'
+                            ),
+                            URIAction(
+                                label='詳細資訊',
+                                uri='https://zh.wikipedia.org/zh-tw/%E5%9F%83%E5%8F%8A%E9%87%91%E5%AD%97%E5%A1%94'
+                            )
+                        ]
+                    ),
+                    CarouselColumn(
+                        thumbnail_image_url='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSo3PtF0hSIGEHu43UDbwtPQNyoCLQSN0n4sA&s',
+                        title='漁人碼頭',
+                        text='fisherman',
+                        actions=[
+                            URIAction(
+                                label='導覽',
+                                uri='https://www.travelking.com.tw/tourguide/taipei/scenery1105.html'
+                            ),
+                            URIAction(
+                                label='詳細資訊',
+                                uri='https://zh.wikipedia.org/zh-tw/%E6%B7%A1%E6%B0%B4%E6%BC%81%E4%BA%BA%E7%A2%BC%E9%A0%AD'
+                            )
+                        ]
                     )
                 ]
             )
         )
-        line_bot_api.reply_message(event.reply_token, image_carousel_template_message)
+        line_bot_api.reply_message(event.reply_token, carousel_template_message)
     else:
         line_bot_api.reply_message(event.reply_token, TextSendMessage(message))
 #主程式
