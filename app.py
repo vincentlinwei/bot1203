@@ -43,7 +43,7 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     message = text=event.message.text
-    if re.match('告訴我秘密',message):
+    if re.match('推薦餐廳',message):
         imagemap_message = ImagemapSendMessage(
             base_url='https://i.imgur.com/WbWyrhz.png?3',
             alt_text='組圖訊息',
